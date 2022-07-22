@@ -1,0 +1,42 @@
+body {
+    background: linear-gradient(rgba(0, 0, 50, 0.5), rgba(0, 0, 50, 0.5)), url(rose.png);
+    background-size: cover;
+    background-position: center;
+}
+
+a {
+    color: #fff !important;
+    margin-top: -10;
+}
+.left {
+    background: rgba(211, 211, 211, 0.5);
+    padding: 30px;
+}
+
+.right {
+    background: rgba(211,211,211, 0.6);
+    padding: 30px;
+}
+
+h1 {
+    color: rgb(180, 225, 233) !important;
+    text-align: center;
+  font-family: "PT Sans Narrow";
+/*margin-top: 20px !important;
+ text-align: left;*/
+    text-transform: uppercase;
+}
+h2 {
+    color: rgb(5, 59, 68) !important;
+    text-align: left;
+  font-family: "Brush Script MT";
+}
+#search{
+    color: rgb(214, 221, 223) !important;
+    background-color: transparent !important;
+}
+.btn-primary{
+    background-color: transparent !important;
+}
+
+
