@@ -31,8 +31,11 @@ h2 {
     text-align: left;
   font-family: "Brush Script MT";
 }
-#search{
-    color: rgb(214, 221, 223) !important;
+label{
+    color: rgb(239, 245, 247) !important;
+}
+.form-control{
+    color: rgb(239, 245, 247) !important;
     background-color: transparent !important;
 }
 .btn-primary{
