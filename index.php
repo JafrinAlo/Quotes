@@ -20,6 +20,20 @@
                 <h2>Rich Bro once said:</h2>
                 <?php
                     require_once "pdo.php";
+                    /*$serial = $pdo->lastInsertId();
+                    var_dump($pdo->lastInsertId());
+                    echo $serial;*/
+                    $stmt=$pdo->query("SELECT word FROM opinion where date=(select MAX(date) from opinion where email='.......@email')");
+
+      
+        
+        while ( $row = $stmt->fetch(PDO::FETCH_ASSOC) ) {
+            
+            echo "<tr><td>";
+            echo(htmlentities($row['word']));
+            echo("</td></tr>");
+    }
+    echo "</table>";
                     
                 ?>
                 <p></p>
