@@ -14,10 +14,19 @@ if(isset($_POST['cancel'])){
     header('Location:home.php');
     return;
 }
-if(isset($_POST['Post'])){
-    if(isset($_POST[quote])){
-       // $stmt=$pdo->prepare(INSERT INTO opinion)
+if(isset($_POST['post'])){
+    if(isset($_POST['quote'])){
+        $stmt=$pdo->prepare('INSERT INTO `opinion`(`email`, `word`)
+                             VALUES (:email,:word)');
+        $stmt->execute(array(
+                            ':email'=>$_SESSION['email'],
+                            ':word'=>$_POST['quote']
+    ));
+    $_SESSION['success'] = "Quote posted";
+   header("Location: home.php");
+    return;
     }
+   
 }
 
 
@@ -31,6 +40,11 @@ if(isset($_POST['Post'])){
         <form method="POST">
         <input type="submit" name="leave" class="btn btn-primary" value="Leave">
         </form>
+        <?php
+        if (isset($_SESSION['success'])) {
+        echo('<p style="color: green;">' . htmlentities($_SESSION['success']) . "</p>\n");
+        unset($_SESSION['success']);
+    }?>
         <form method="POST">
         
             <label for="">Quote</label>
