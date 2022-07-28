@@ -20,30 +20,37 @@
                 <h2>Rich Bro once said:</h2>
                 <?php
                     require_once "pdo.php";
+                    require "result_index.php";
                     /*$serial = $pdo->lastInsertId();
                     var_dump($pdo->lastInsertId());
                     echo $serial;*/
-                    $stmt=$pdo->query("SELECT word FROM opinion where date=(select MAX(date) from opinion where email='.......@email')");
+                    $stmt=$pdo->query("SELECT word FROM opinion where date=(select MAX(date) from opinion where email='jafrinalo@gmail.com')");
 
       
         
-        while ( $row = $stmt->fetch(PDO::FETCH_ASSOC) ) {
+                    echo "<table >";
+                    while ( $row = $stmt->fetch(PDO::FETCH_ASSOC) ) {
             
-            echo "<tr><td>";
-            echo(htmlentities($row['word']));
-            echo("</td></tr>");
-    }
-    echo "</table>";
-                    
-                ?>
-                <p></p>
-                <button type =submit class="btn btn-primary" value="prev_r">Previous Quotes</button>
+                        echo "<tr><td>";
+                        echo(htmlentities($row['word']));
+                        echo("</td></tr>");
+                    }
+                    echo "</table>";
 
+                    if(isset($_POST['prev_r'])){
+                    show_result('.......@email');
+                    }
+                ?>
+                
+                <p></p>
+                <form method="POST">
+                <input type ="submit" class="btn btn-primary" name="prev_r" value="Previous Quotes">
+                </form>
             </div>
             <div class="col-md-6 right">
                 <h2>Poor Bro once said:</h2>
                 <p></p>
-                <button type =submit class="btn btn-primary" value="prev_r">Previous Quotes</button>
+                <input type ="submit" class="btn btn-primary" name="prev_p" value="Previous Quotes">
             </div>
             </div>
         </div>
