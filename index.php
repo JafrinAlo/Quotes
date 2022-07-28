@@ -20,37 +20,38 @@
                 <h2>Rich Bro once said:</h2>
                 <?php
                     require_once "pdo.php";
-                    require "result_index.php";
-                    /*$serial = $pdo->lastInsertId();
-                    var_dump($pdo->lastInsertId());
-                    echo $serial;*/
-                    $stmt=$pdo->query("SELECT word FROM opinion where date=(select MAX(date) from opinion where email='jafrinalo@gmail.com')");
-
-      
-        
-                    echo "<table >";
-                    while ( $row = $stmt->fetch(PDO::FETCH_ASSOC) ) {
-            
-                        echo "<tr><td>";
-                        echo(htmlentities($row['word']));
-                        echo("</td></tr>");
-                    }
-                    echo "</table>";
+                    require_once "result_index.php";
+                    $tquote=today_quote($pdo,'@mail');
+                    echo $tquote;
 
                     if(isset($_POST['prev_r'])){
-                    show_result('.......@email');
-                    }
+                    $history=show_result($pdo,'@mail');
+                    echo $history;
+                }
                 ?>
                 
                 <p></p>
-                <form method="POST">
+                <form action="index.php" method="POST">
                 <input type ="submit" class="btn btn-primary" name="prev_r" value="Previous Quotes">
                 </form>
             </div>
             <div class="col-md-6 right">
                 <h2>Poor Bro once said:</h2>
+                <?php
+                    //require_once "pdo.php";
+                    //require_once "result_index.php";
+                    $tquote=today_quote($pdo,'@mail');
+                    echo $tquote;
+
+                    if(isset($_POST['prev_p'])){
+                    $history=show_result($pdo,'@mail');
+                    echo $history;
+                    }
+                ?>
                 <p></p>
+                <form action="index.php" method="POST">
                 <input type ="submit" class="btn btn-primary" name="prev_p" value="Previous Quotes">
+                </form>
             </div>
             </div>
         </div>
